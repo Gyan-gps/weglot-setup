@@ -1,5 +1,6 @@
 import axios from "axios";
-import { GetServerSidePropsContext, GetServerSidePropsResult, NextApiResponse } from "next";
+// import { GetServerSidePropsResult } from "next";
+import Image from "next/image";
 
 interface IProduct {
   id: number;
@@ -21,11 +22,13 @@ export default function Home({ products }: { products: IProduct[] }) {
     <div
       className={'flex flex-wrap max-w-screen-xl mx-auto p-4 gap-x-4 gap-y-8'}
     >
-      {products.map((product) => (<div className="max-w-sm rounded overflow-hidden shadow-lg bg-white p-6">
-        <img
+      {products.map((product) => (<div key={product.id} className="max-w-sm rounded overflow-hidden shadow-lg bg-white p-6">
+        <Image
           className="w-full h-64 object-contain mb-4"
           src={product.image}
           alt={product.title}
+          width={300}
+          height={350}
         />
         <div className="font-bold text-xl mb-2 truncate">{product.title}</div>
         <p className="text-gray-700 text-base mb-2 truncate">{product.description}</p>
@@ -44,8 +47,8 @@ export default function Home({ products }: { products: IProduct[] }) {
 
 
 export async function getServerSideProps(
-  context: GetServerSidePropsContext
-): Promise<GetServerSidePropsResult<{}>> {
+  // context: GetServerSidePropsContext
+) {
   const response = await axios.get('https://fakestoreapi.com/products');
 
   return { props: { products: response.data } };

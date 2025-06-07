@@ -1,6 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  images: {
+    domains: ['fakestoreapi.com'],
+  },
   // i18n: {
   //   locales: ['en', 'fr', 'it', 'es', 'ja', 'ko'], // Supported languages
   //   defaultLocale: 'en',
