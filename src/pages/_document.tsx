@@ -12,7 +12,7 @@ export default function Document() {
         <script src="https://cdn.gtranslate.net/widgets/latest/float.js" defer></script>
       </Head>
       <body className="antialiased">
-        <div className="gtranslate_wrapper"></div>
+        {/* <div className="gtranslate_wrapper"></div> */}
         <Main />
         <NextScript />
       </body>
